@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, Button, TouchableHighlight } from 'react-native';
 import Pokemons from '../mock/Pokemons';
 import PokeCard from './PokeCard';
@@ -6,11 +6,11 @@ import getRandomColor from '../utils/RandomColor';
 import { styles } from '../styles/PokeList';
 
 const PokeList = () => {
-  const [pokemons, setPokemons] = React.useState({ results:[] });
-  const [showPokemon, setShowPokemon] = React.useState(false);
+  const [pokemons, setPokemons] = useState({ results:[] });
+  const [showPokemon, setShowPokemon] = useState(false);
   const buttonTitle = showPokemon ? "Hide Pokemons" : "Load Pokemons";
 
-  React.useEffect(() => {
+  useEffect(() => {
     setPokemons(Pokemons);
   }, []);
 
@@ -23,7 +23,7 @@ const PokeList = () => {
 
       {showPokemon && (<FlatList 
           data={pokemons.results}
-          renderItem={({ item }) => <PokeCard color={getRandomColor()} name={item.name}/>}
+          renderItem={({ item }) => <PokeCard color={getRandomColor()} name={item.name} type={item.type}/>}
           keyExtractor={item => item.id}
         />)
       }
