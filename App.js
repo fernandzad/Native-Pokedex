@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, SafeAreaView, StyleSheet } from 'react-native';
 import PokeList from './components/PokeList';
-import Constants from 'expo-constants';
+import { styles } from './styles/App';
 
 export default function App() {
   return (
@@ -14,9 +14,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
-  }
-})
