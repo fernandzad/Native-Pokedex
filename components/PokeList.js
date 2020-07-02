@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Text, View, FlatList, Button, TouchableHighlight } from 'react-native';
 import Pokemons from '../mock/Pokemons';
 import PokeCard from './PokeCard';
 import getRandomColor from '../utils/RandomColor';
-import { styles } from '../styles/PokeList';
+import { stylesList } from '../styles/PokeList.style';
 
-const PokeList = () => {
+const PokeList = ({ navigation }) => {
   const [pokemons, setPokemons] = useState({ results:[] });
   const [showPokemon, setShowPokemon] = useState(false);
   const buttonTitle = showPokemon ? "Hide Pokemons" : "Load Pokemons";
@@ -14,16 +14,22 @@ const PokeList = () => {
     setPokemons(Pokemons);
   }, []);
 
+  const getRandomHTMLColor = useCallback(() => getRandomColor(), );
+
   return (
     <View>
-      <Text style={styles.title}>Native Pokédex</Text>
-      <TouchableHighlight style={styles.button}>
-        <Button color="#fff" title={buttonTitle} onPress={() => setShowPokemon(!showPokemon)}/>
+      <Text style={stylesList.title}>Native Pokédex</Text>
+      <TouchableHighlight >
+        <Button title={buttonTitle} onPress={() => setShowPokemon(!showPokemon)}/>
       </TouchableHighlight>
 
       {showPokemon && (<FlatList 
           data={pokemons.results}
-          renderItem={({ item }) => <PokeCard color={getRandomColor()} name={item.name} type={item.type}/>}
+          renderItem={({ item }) => 
+            <View onTouchEndCapture={() => navigation.navigate('PokeDetail', { name: item.name, url: item.url, type: item.type })}>
+              <PokeCard color={getRandomHTMLColor()} name={item.name}/>
+            </View>
+          }
           keyExtractor={item => item.id}
         />)
       }

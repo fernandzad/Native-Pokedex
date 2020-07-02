@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
+export const stylesList = StyleSheet.create({
   title: {
     fontSize: 22,
     textAlign: 'center',

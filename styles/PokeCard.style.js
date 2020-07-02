@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
+export const stylesCard = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
     borderRadius:10,
     margin: 10,
+    marginLeft: 40,
+    marginRight: 40,
     padding: 30,
     color: '#fff'
   },
