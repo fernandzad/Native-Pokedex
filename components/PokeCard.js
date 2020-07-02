@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
+import { styles } from '../styles/PokeCard';
 
 const Pokemon = ({ name, color }) => {
   return (
@@ -10,15 +11,5 @@ const Pokemon = ({ name, color }) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    borderRadius:10,
-    margin: 3,
-    padding: 30,
-  },
-});
 
 export default Pokemon;

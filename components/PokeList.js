@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, FlatList, Button, TouchableHighlight } from 'react-native';
-import Pokemons from './Pokemons';
-import Pokemon from './Pokemon';
-import getRandomColor from '../styles/RandomColor';
-
+import { Text, View, FlatList, Button, TouchableHighlight } from 'react-native';
+import Pokemons from '../mock/Pokemons';
+import PokeCard from './PokeCard';
+import getRandomColor from '../utils/RandomColor';
+import { styles } from '../styles/PokeList';
 
 const PokeList = () => {
   const [pokemons, setPokemons] = React.useState({ results:[] });
@@ -23,33 +23,12 @@ const PokeList = () => {
 
       {showPokemon && (<FlatList 
           data={pokemons.results}
-          renderItem={({ item }) => <Pokemon color={getRandomColor()} name={item.name}/>}
+          renderItem={({ item }) => <PokeCard color={getRandomColor()} name={item.name}/>}
           keyExtractor={item => item.id}
         />)
       }
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 22,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    paddingTop: 10,
-  }, 
-  button: {
-    marginRight:80,
-    marginLeft:80,
-    marginTop:10,
-    marginBottom: 10,
-    paddingTop:10,
-    paddingBottom:10,
-    backgroundColor:'#68a0cf',
-    borderRadius:10,
-    borderWidth: 1,
-    borderColor: '#fff',
-  }
-});
 
 export default PokeList;
