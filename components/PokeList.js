@@ -26,7 +26,7 @@ const PokeList = ({ navigation }) => {
       {showPokemon && (<FlatList 
           data={pokemons.results}
           renderItem={({ item }) => 
-            <View onTouchEndCapture={() => navigation.navigate('PokeDetail', { name: item.name, url: item.url, type: item.type })}>
+            <View onTouchEnd={() => navigation.navigate('PokeDetail', { name: item.name, url: item.url, type: item.type })}>
               <PokeCard color={getRandomHTMLColor()} name={item.name}/>
             </View>
           }

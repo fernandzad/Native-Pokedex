@@ -10,7 +10,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="Home" options={{name: 'Native Pokedex'}} component={Home}/>
         <Stack.Screen name="PokeDetail" component={PokeDetail} />
       </Stack.Navigator>
     </NavigationContainer>

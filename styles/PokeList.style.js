@@ -5,7 +5,6 @@ export const stylesList = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
     fontWeight: 'bold',
-    paddingTop: 10,
   }, 
   button: {
     marginRight:80,
