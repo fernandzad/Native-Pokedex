@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { stylesCard } from '../styles/PokeCard.style';
+import { PokedexContext } from '../context/PokedexContext';
 
-const Pokemon = ({ name, color }) => {
+
+const Pokemon = ({ item }) => {
+  const { name } = item;
+  const navigation = useContext(PokedexContext);
   return (
     <TouchableOpacity>
-      <View style={stylesCard.container} backgroundColor={color}>
+      <View 
+        onTouchEnd={() =>
+          navigation.navigate('PokeDetail', {
+            name,
+          })
+        }
+        style={stylesCard.container}>
         <Text style={stylesCard.boldWhiteText}>
           {`${name.charAt(0).toUpperCase().slice()}${name.slice(1)}`}
         </Text>
