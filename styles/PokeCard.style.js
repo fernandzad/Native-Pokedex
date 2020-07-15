@@ -5,18 +5,19 @@ export const stylesCard = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderRadius:10,
+    borderRadius: 10,
     margin: 10,
     marginLeft: 40,
     marginRight: 40,
     padding: 30,
-    color: '#fff'
+    color: '#fff',
+    backgroundColor: '#1A7981',
   },
   whiteText: {
-    color: '#fff'
+    color: '#fff',
   },
   boldWhiteText: {
     color: '#fff',
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });

@@ -1,38 +1,54 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Text, View, FlatList, Button, TouchableHighlight } from 'react-native';
-import Pokemons from '../mock/Pokemons';
+import React, { useEffect, useState } from 'react';
+import { Text, View, FlatList, Button, TouchableHighlight, Image } from 'react-native';
 import PokeCard from './PokeCard';
-import getRandomColor from '../utils/RandomColor';
 import { stylesList } from '../styles/PokeList.style';
+import ImagePokedex from '../assets/pkdx.png';
 
-const PokeList = ({ navigation }) => {
-  const [pokemons, setPokemons] = useState({ results:[] });
+const pokemonsURI = 'https://pokeapi.co/api/v2/pokemon?limit=20';
+
+const PokeList = () => {
+  const [pokemons, setPokemons] = useState([]);
   const [showPokemon, setShowPokemon] = useState(false);
-  const buttonTitle = showPokemon ? "Hide Pokemons" : "Load Pokemons";
+  const buttonTitle = showPokemon ? 'Turn off' : 'Turn on';
 
   useEffect(() => {
-    setPokemons(Pokemons);
-  }, []);
+    const fetchData = async () => {
+      try {
+        const data = await fetch(pokemonsURI);
+        const pokemons = await data.json();
 
-  const getRandomHTMLColor = useCallback(() => getRandomColor(), );
+        setPokemons(pokemons.results);
+      } catch (err) {
+        console.log('Error fetching data PokeList-----------', err);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <View>
-      <Text style={stylesList.title}>Native Pokédex</Text>
-      <TouchableHighlight >
-        <Button title={buttonTitle} onPress={() => setShowPokemon(!showPokemon)}/>
+      <Text style={stylesList.title}> Native Pokédex </Text>
+      <TouchableHighlight>
+        <Button title={buttonTitle} onPress={() => setShowPokemon(!showPokemon)} />
       </TouchableHighlight>
 
-      {showPokemon && (<FlatList 
-          data={pokemons.results}
-          renderItem={({ item }) => 
-            <View onTouchEnd={() => navigation.navigate('PokeDetail', { name: item.name, url: item.url, type: item.type })}>
-              <PokeCard color={getRandomHTMLColor()} name={item.name}/>
+      {!showPokemon && (
+        <View style={stylesList.inlineContainer}>
+          <Image source={ImagePokedex} />
+        </View>
+      )}
+
+      {showPokemon && (
+        <FlatList
+          data={pokemons}
+          renderItem={({ item }) => (
+            <View>
+              <PokeCard item={item} />
             </View>
-          }
-          keyExtractor={item => item.id}
-        />)
-      }
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      )}
     </View>
   );
 };
