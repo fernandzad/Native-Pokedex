@@ -1,42 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
+import { Types } from './Types';
+import { Abilities } from './Abilities';
+import { CustomText } from '../generic-components/CustomText';
+import Loading from '../generic-components/Loading';
 import Stats from './Stats';
 import { stylesDetail } from '../styles/PokeDetail.style';
 import { uri } from '../utils/uri';
 
-const TextFormat = ({ label, text }) => (
-	<View>
-		<Text style={stylesDetail.whiteText}>
-			{label}
-			<Text style={stylesDetail.boldWhiteText}> {`${text} `}</Text>
-		</Text>
-	</View>
-);
-
-const Types = ({ types }) => {
-	return (
-		<React.Fragment>
-			{types.map((item, key) => {
-				const { type } = item;
-				return <TextFormat label={`Type #${key + 1}:`} text={type.name} />;
-			})}
-		</React.Fragment>
-	);
-};
-
-const Abilities = ({ abilities }) => {
-	return (
-		<React.Fragment>
-			{abilities.map((item, key) => {
-				const { ability } = item;
-				return <TextFormat label={`Ability #${key + 1}:`} text={ability.name} />;
-			})}
-		</React.Fragment>
-	);
-};
-
 export const Detail = ({ route }) => {
 	const { name } = route.params;
+	const [loading, setLoading] = useState(false);
 	const [pokemon, setPokemon] = useState({});
 	const [images, setImages] = useState({});
 	const [types, setTypes] = useState([]);
@@ -46,6 +20,7 @@ export const Detail = ({ route }) => {
 	useEffect(() => {
 		const fetchPokemon = async () => {
 			try {
+				setLoading(true);
 				const data = await fetch(`${uri}/${name}`);
 				const info = await data.json();
 
@@ -54,12 +29,16 @@ export const Detail = ({ route }) => {
 				setTypes(info.types);
 				setAbilities(info.abilities);
 				setStats(info.stats);
+
+				setLoading(false);
 			} catch (err) {
 				console.log('Error fetching data PokeDetail-----------', err);
 			}
 		};
 		fetchPokemon();
 	}, []);
+
+	if (loading) return <Loading />;
 
 	return (
 		<ScrollView>
@@ -68,12 +47,11 @@ export const Detail = ({ route }) => {
 			</View>
 			<View style={stylesDetail.container}>
 				<View style={stylesDetail.inlineContainer}>
-					<TextFormat label="Id: " text={pokemon.id} />
-					<TextFormat label="Base experience: " text={pokemon.base_experience} />
+					<CustomText label="Base experience: " text={pokemon.base_experience} />
 				</View>
 				<View style={stylesDetail.inlineContainer}>
-					<TextFormat label="Height: " text={pokemon.height} />
-					<TextFormat label="Weight: " text={pokemon.weight} />
+					<CustomText label="Height: " text={pokemon.height} />
+					<CustomText label="Weight: " text={pokemon.weight} />
 				</View>
 				<View style={stylesDetail.list}>
 					<Types types={types} />

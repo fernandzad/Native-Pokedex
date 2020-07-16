@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import List from './List';
 import { styles } from '../styles/Home.style';
@@ -15,3 +15,5 @@ export const Home = ({ navigation }) => {
 		</PokedexContext.Provider>
 	);
 };
+
+
