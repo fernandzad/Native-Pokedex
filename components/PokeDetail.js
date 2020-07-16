@@ -78,8 +78,8 @@ export const PokeDetail = ({ route }) => {
 				<View style={stylesDetail.list}>
 					<Types types={types} />
 					<Abilities abilities={abilities} />
-        </View>
-        <Stats stats={stats} />
+				</View>
+				<Stats stats={stats} />
 				<View style={stylesDetail.inlineContainer}>
 					<Image source={{ width: 150, height: 150, uri: images.front_default }} />
 					<Image source={{ width: 150, height: 150, uri: images.back_default }} />
