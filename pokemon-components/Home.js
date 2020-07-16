@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView } from 'react-native';
-import PokeList from './PokeList';
+import List from './List';
 import { styles } from '../styles/Home.style';
 import { PokedexContext } from '../context/PokedexContext';
 
@@ -9,7 +9,7 @@ export const Home = ({ navigation }) => {
 		<PokedexContext.Provider value={navigation}>
 			<SafeAreaView style={styles.container}>
 				<View>
-					<PokeList />
+					<List />
 				</View>
 			</SafeAreaView>
 		</PokedexContext.Provider>

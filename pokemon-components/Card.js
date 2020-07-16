@@ -10,7 +10,7 @@ const Pokemon = ({ item }) => {
 		<TouchableOpacity>
 			<View
 				onTouchEnd={() =>
-					navigation.navigate('PokeDetail', {
+					navigation.navigate('Detail', {
 						name,
 					})
 				}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, Button, TouchableHighlight, Image } from 'react-native';
-import PokeCard from './PokeCard';
+import PokeCard from './Card';
 import { stylesList } from '../styles/PokeList.style';
 import ImagePokedex from '../assets/pkdx.png';
 import { uri } from '../utils/uri';

@@ -35,7 +35,7 @@ const Abilities = ({ abilities }) => {
 	);
 };
 
-export const PokeDetail = ({ route }) => {
+export const Detail = ({ route }) => {
 	const { name } = route.params;
 	const [pokemon, setPokemon] = useState({});
 	const [images, setImages] = useState({});
