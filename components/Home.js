@@ -5,13 +5,13 @@ import { styles } from '../styles/Home.style';
 import { PokedexContext } from '../context/PokedexContext';
 
 export const Home = ({ navigation }) => {
-  return (
-    <PokedexContext.Provider value={navigation}>
-      <SafeAreaView style={styles.container}>
-        <View>
-          <PokeList />
-        </View>
-      </SafeAreaView>
-    </PokedexContext.Provider>
-  );
+	return (
+		<PokedexContext.Provider value={navigation}>
+			<SafeAreaView style={styles.container}>
+				<View>
+					<PokeList />
+				</View>
+			</SafeAreaView>
+		</PokedexContext.Provider>
+	);
 };
