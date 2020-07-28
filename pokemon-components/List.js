@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, Button, TouchableHighlight, Image } from 'react-native';
-import PokeCard from './Card';
+import Card from './Card';
 import { stylesList } from '../styles/PokeList.style';
 import ImagePokedex from '../assets/pkdx.png';
 import { uri } from '../utils/uri';
@@ -44,7 +44,7 @@ const PokeList = () => {
 					data={pokemons}
 					renderItem={({ item }) => (
 						<View>
-							<PokeCard item={item} />
+							<Card item={item} />
 						</View>
 					)}
 					keyExtractor={(item) => item.id}

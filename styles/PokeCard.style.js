@@ -11,13 +11,14 @@ export const stylesCard = StyleSheet.create({
 		marginRight: 40,
 		padding: 30,
 		color: '#fff',
-		backgroundColor: '#1A7981',
+		//backgroundColor: '#1A7981',
+		borderColor: 'red',
+		borderWidth: 0.5,
 	},
 	whiteText: {
 		color: '#fff',
 	},
 	boldWhiteText: {
-		color: '#fff',
-		fontWeight: 'bold',
+		color: 'red',
 	},
 });

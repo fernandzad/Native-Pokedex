@@ -19,8 +19,9 @@ export const Detail = ({ route }) => {
 
 	useEffect(() => {
 		const fetchPokemon = async () => {
+			setLoading(true);
+			
 			try {
-				setLoading(true);
 				const data = await fetch(`${uri}/${name}`);
 				const info = await data.json();
 
@@ -29,11 +30,10 @@ export const Detail = ({ route }) => {
 				setTypes(info.types);
 				setAbilities(info.abilities);
 				setStats(info.stats);
-
-				setLoading(false);
 			} catch (err) {
 				console.log('Error fetching data PokeDetail-----------', err);
 			}
+			setLoading(false);
 		};
 		fetchPokemon();
 	}, []);

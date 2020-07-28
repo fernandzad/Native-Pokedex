@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
 import { HomeNavigation } from './navigation/home.navigation';
-import { RegionsNavigation } from './navigation/regions.navigation';
+import { ItemsNavigation } from './navigation/Items.navigation';
+import { Icon } from 'react-native-elements';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,20 +15,20 @@ export default function App() {
 					tabBarIcon: ({ focused, color, size }) => {
 						let iconName;
 						if (route.name === 'Home')
-							iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
-						else if (route.name === 'Regions')
-							iconName = focused ? 'ios-list-box' : 'ios-list';
+							iconName = focused ? 'home' : 'home';
+						else if (route.name === 'Items')
+							iconName = focused ? 'star' : 'star';
 
-						return <Ionicons name={iconName} size={size} color={color} />;
+						return <Icon name={iconName} color={color} />;
 					},
 				})}
 				tabBarOptions={{
-					activeTintColor: 'green',
+					activeTintColor: 'red',
 					inactiveTintColor: 'gray',
 				}}
 			>
 				<Tab.Screen name="Home" component={HomeNavigation} />
-				<Tab.Screen name="Regions" component={RegionsNavigation} />
+				<Tab.Screen name="Items" component={ItemsNavigation} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);

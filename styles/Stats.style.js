@@ -7,10 +7,10 @@ export const stylesStats = StyleSheet.create({
 		color: '#fff',
 	},
 	whiteText: {
-		color: '#fff',
+		color: '#F64464',
 	},
 	boldWhiteText: {
-		color: '#fff',
+		color: '#F64464',
 		fontWeight: 'bold',
 	},
 });

@@ -7,7 +7,7 @@ export const stylesDetail = StyleSheet.create({
 		fontWeight: 'bold',
 		paddingTop: 10,
 		alignContent: 'center',
-		color: '#000',
+		color: '#F64464',
 	},
 	container: {
 		flex: 1,
@@ -19,8 +19,11 @@ export const stylesDetail = StyleSheet.create({
 		marginLeft: 15,
 		marginRight: 15,
 		padding: 10,
-		color: '#fff',
-		backgroundColor: '#0E393D',
+		//color: '#fff',
+		//backgroundColor: '#0E393D',
+		color: '#F64464',
+		borderColor: '#F64464',
+		borderWidth: 1,
 	},
 	inlineContainer: {
 		flexWrap: 'wrap',
